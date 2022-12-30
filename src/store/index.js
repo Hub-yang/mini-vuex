@@ -13,7 +13,7 @@ const store = createStore({
     },
   },
   actions: {
-    add({ commit }) {
+    add({ commit, state, dispatch }) {
       setTimeout(() => {
         commit("ADD")
       }, 1000)
