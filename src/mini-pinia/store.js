@@ -33,12 +33,12 @@ export function defineStore(id, options) {
 
           // 封装actions中的所有函数，因为要指定上下文和做一些其他的事情
           ...Object.keys(actions || {}).reduce((wrapperActions, actionName) => {
-            wrapperActions[actionName] = () => actions[actionName].call(store)
+            // 注意处理参数
+            wrapperActions[actionName] = (...args) => {
+              actions[actionName].apply(store, args)
+            }
             return wrapperActions
           }, {}),
-          increment() {
-            state.count++
-          },
           $patch(partialtateOrMutator) {
             if (typeof partialtateOrMutator === "object") {
               Object.keys(partialtateOrMutator).forEach((key) => {

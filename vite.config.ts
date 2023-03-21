@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 
@@ -8,4 +9,6 @@ export default defineConfig({
     port: 3015,
     open: true,
   },
+  // 单元测试
+  test: {},
 })
